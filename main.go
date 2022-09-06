@@ -31,6 +31,15 @@ func main() {
 	if err != nil {
 		log.Print(err)
 	}
+	f, err := os.Create("newfile")
+	if err != nil {
+		log.Println("create file: ", err)
+		return
+	}
+	err = t.Execute(f, class)
+	if err != nil {
+		log.Print(err)
+	}
 	// standard output to print merged data
 	err = t.Execute(os.Stdout, class)
 	if err != nil {
